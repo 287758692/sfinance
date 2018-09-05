@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		                    http://www.springframework.org/schema/beans/spring-beans.xsd 
+		                    http://www.springframework.org/schema/context
+		                    http://www.springframework.org/schema/context/spring-context.xsd
+
+
+		                    http://www.springframework.org/schema/mvc
+		                    http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
+        <property name="supportedMediaTypes">  
+            <list>  
+                <value>application/json;charset=UTF-8</value>  
+                <value>text/html;charset=UTF-8</value> 
+            </list>  
+        </property>  
+    </bean> 
+	<!-- 注解扫描包 -->
+	<context:component-scan base-package="cn.sfinance.*" />
+
+	<!-- 开启注解 -->
+	<mvc:annotation-driven />
+	
+
+	<!-- 静态资源(js/image)的访问 -->
+	<mvc:resources location="/assets/" mapping="/assets/**"/>
+
+	<!-- 定义视图解析器 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	
+	<!-- 200*1024*1024即200M resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="209715200"/><!-- 上传文件的最大值 -->
+		<property name="defaultEncoding" value="UTF-8"/><!-- 默认编码 -->
+		<property name="resolveLazily" value="true"/>
+	</bean>
+	
+	<bean id="SpringApplicationContext" class="cn.sfinance.utils.ApplicationContextHelper"></bean>
+	
+</beans>
