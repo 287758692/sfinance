@@ -6,7 +6,7 @@
     <groupId>cn.sfinance</groupId>
     <artifactId>sfinance</artifactId>
     <packaging>war</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -153,12 +153,22 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.zxing</groupId>
+            <artifactId>core</artifactId>
+            <version>3.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.5</version>
+        </dependency>
     </dependencies>
     <name>忻铭科技</name>
     <url>http://www.sfinance.com.cn</url>
 
     <build>
-        <finalName>spirngMVC</finalName>
+        <finalName>sfinance</finalName>
         <plugins>
             <!-- 编码和编译和JDK版本 -->
             <plugin>

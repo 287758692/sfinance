@@ -8,7 +8,7 @@ public class UsersConfigUtils {
 
 	public String GetUsersConfig(String type){  
 		String vInfo = "";
-		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("src/users.properties");
+		InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("users.properties");
 		Properties p = new Properties();
 		try {
 			p.load(inputStream);

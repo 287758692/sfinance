@@ -41,7 +41,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/list" ,produces="application/json;charset=UTF-8")
-	public @ResponseBody Object userList(HttpServletRequest request) throws IOException {
+	public @ResponseBody Object list(HttpServletRequest request) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		int pageSize = Integer.parseInt(request.getParameter("pageSize"));  
@@ -62,7 +62,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/addView")
-	public @ResponseBody Object userAdd(HttpServletRequest request) throws IOException {
+	public @ResponseBody Object cooperationAdd(HttpServletRequest request) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("cooperationAdd");
@@ -73,7 +73,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/addConfirm", method = RequestMethod.POST)
-	public @ResponseBody Object addConfirm(HttpServletRequest request,HttpSession session) throws IOException {
+	public @ResponseBody Object cooperationAddConfirm(HttpServletRequest request,HttpSession session) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
 		
