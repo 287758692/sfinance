@@ -17,11 +17,32 @@ SQL脚本：
  Target Server Version : 50720
  File Encoding         : 65001
 
- Date: 06/08/2018 14:06:16
+ Date: 05/11/2018 13:53:42
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for cooperationlink
+-- ----------------------------
+DROP TABLE IF EXISTS `cooperationlink`;
+CREATE TABLE `cooperationlink`  (
+  `Id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `Name` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '名称',
+  `provinceCode` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '城市',
+  `Level` int(3) NULL DEFAULT NULL COMMENT '等级',
+  `Seq` int(3) NULL DEFAULT NULL COMMENT '序号',
+  `Parent` int(11) NULL DEFAULT NULL COMMENT '上级',
+  `Link` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '链接',
+  `QRcode` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '二维码',
+  `STATUS` varchar(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '状态',
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`Id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 36 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '合作推广链接列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for cooperationlist
@@ -75,15 +96,7 @@ CREATE TABLE `cooperationlist`  (
   `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
   `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`cooperationId`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '异业合作商家数据列表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of cooperationlist
--- ----------------------------
-INSERT INTO `cooperationlist` VALUES (1, '好乐迪', 'R', 'SHANGHAI', '30', '11150', '1000', '2000', '5000', '0', '150', '0', '3000', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Upload/2018-08-06-10-23-05/480_wonder_world.jpg', 'Y', NULL, NULL, NULL, '2018-08-02 19:58:21');
-INSERT INTO `cooperationlist` VALUES (2, '满记甜品', 'H', 'SHANGHAI', '20', '1000', '1000', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Upload/2018-08-05-18-59-35/480_My_Own_Secret.jpg', 'Y', NULL, NULL, NULL, NULL);
-INSERT INTO `cooperationlist` VALUES (10, '测试', 'A', 'BEIJING', '11', '11', '11', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Upload/2018-08-05-18-51-56/480_0105.jpg', 'Y', NULL, NULL, NULL, NULL);
-INSERT INTO `cooperationlist` VALUES (11, '1111', 'C', 'SHANGHAI', '11', '1111', '1111', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', 'Upload/2018-08-05-21-36-18/480_taste.jpg', 'Y', NULL, NULL, NULL, NULL);
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '异业合作商家数据列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for detailreport
@@ -105,31 +118,6 @@ CREATE TABLE `detailreport`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '商户报表明细' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of detailreport
--- ----------------------------
-INSERT INTO `detailreport` VALUES (1, '1', '好乐迪', 'AGE', 1, '0~18', '200', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (2, '1', '好乐迪', 'AGE', 2, '19~30', '310', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (3, '1', '好乐迪', 'AGE', 3, '31~40', '234', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (4, '1', '好乐迪', 'AGE', 4, '41~50', '11', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (5, '1', '好乐迪', 'AGE', 5, '51~60', '123', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (6, '1', '好乐迪', 'AGE', 6, '61~∞', '32', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (7, '1', '好乐迪', 'ADD', 1, '1月', '10', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (8, '1', '好乐迪', 'ADD', 2, '2月', '20', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (9, '1', '好乐迪', 'ADD', 3, '3月', '30', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (10, '1', '好乐迪', 'ADD', 4, '4月', '40', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (11, '1', '好乐迪', 'ADD', 5, '5月', '50', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (12, '1', '好乐迪', 'ADD', 6, '6月', '60', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (13, '1', '好乐迪', 'ADD', 7, '7月', '70', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (14, '1', '好乐迪', 'ADD', 8, '8月', '80', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (15, '1', '好乐迪', 'ADD', 9, '9月', '90', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (16, '1', '好乐迪', 'ADD', 10, '10月', '50', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (17, '1', '好乐迪', 'ADD', 11, '11月', '60', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (18, '1', '好乐迪', 'ADD', 12, '12月', '40', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (19, '1', '好乐迪', 'AGE', 7, '70-100', '100', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (20, '1', '好乐迪', 'AGE', 8, '80-100', '10', NULL, NULL, NULL, NULL);
-INSERT INTO `detailreport` VALUES (21, '1', '好乐迪', 'AGE', 9, '90-100', '11', NULL, NULL, NULL, NULL);
-
--- ----------------------------
 -- Table structure for provincelist
 -- ----------------------------
 DROP TABLE IF EXISTS `provincelist`;
@@ -145,42 +133,132 @@ CREATE TABLE `provincelist`  (
 ) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '省份列表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of provincelist
+-- Table structure for sys_log
 -- ----------------------------
-INSERT INTO `provincelist` VALUES (1, 'BEIJING', '北京', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (2, 'TIANJIN', '天津', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (3, 'SHANGHAI', '上海', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (4, 'CHONGQING', '重庆', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (5, 'HEBEI', '河北', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (6, 'HENAN', '河南', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (7, 'YUNNAN', '云南', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (8, 'LIAONING', '辽宁', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (9, 'HEILONGJIANG', '黑龙江', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (10, 'HUNAN', '湖南', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (11, 'ANHUI', '安徽', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (12, 'SHANDONG', '山东', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (13, 'XINJIANG', '新疆', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (14, 'JIANGSU', '江苏', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (15, 'ZHEJIANG', '浙江', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (16, 'JIANGXI', '江西', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (17, 'HUBEI', '湖北', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (18, 'GUANGXI', '广西', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (19, 'GANSU', '甘肃', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (20, 'SHANXI1', '山西', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (21, 'NEIMENGGU', '内蒙古', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (22, 'SHANXI2', '陕西', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (23, 'JILIN', '吉林', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (24, 'FUJIAN', '福建', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (25, 'GUIZHOU', '贵州', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (26, 'GUANGDONG', '广东', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (27, 'QINGHAI', '青海', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (28, 'XIZANG', '西藏', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (29, 'SICHUANG', '四川', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (30, 'NINGXIA', '宁夏', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (31, 'HAINAN', '海南', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (32, 'TAIWAN', '台湾', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (33, 'XIANGGANG', '香港', NULL, NULL, NULL, NULL);
-INSERT INTO `provincelist` VALUES (34, 'AOMEN', '澳门', NULL, NULL, NULL, NULL);
+DROP TABLE IF EXISTS `sys_log`;
+CREATE TABLE `sys_log`  (
+  `logId` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `method` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Type` int(2) NULL DEFAULT NULL,
+  `RequestIp` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ExceptionCode` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ExceptionDetail` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Params` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  PRIMARY KEY (`logId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '系统日志表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_menu`;
+CREATE TABLE `sys_menu`  (
+  `menuId` int(11) NOT NULL AUTO_INCREMENT,
+  `pmenuId` int(11) NULL DEFAULT NULL,
+  `menuName` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `menuDesc` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `menuIcon` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `menuAction` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`menuId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '菜单信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_org
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_org`;
+CREATE TABLE `sys_org`  (
+  `orgId` int(11) NOT NULL AUTO_INCREMENT,
+  `porgId` int(11) NULL DEFAULT NULL,
+  `orgCode` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `orgName` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `orgDesc` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`orgId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '组织机构表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_role
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role`;
+CREATE TABLE `sys_role`  (
+  `roleId` int(11) NOT NULL AUTO_INCREMENT COMMENT '角色ID',
+  `roleName` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色名称',
+  `roleDesc` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '角色描述',
+  `status` int(2) NULL DEFAULT NULL COMMENT '状态',
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`roleId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_role_menu
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_role_menu`;
+CREATE TABLE `sys_role_menu`  (
+  `roleMenuId` int(11) NOT NULL AUTO_INCREMENT,
+  `roleId` int(11) NULL DEFAULT NULL,
+  `menuId` int(11) NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`roleMenuId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 30 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '角色权限表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_user
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user`;
+CREATE TABLE `sys_user`  (
+  `userId` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户Id',
+  `loginName` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '登录名',
+  `passwd` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
+  `userCode` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '工号',
+  `userName` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '姓名',
+  `sex` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别',
+  `mobileNo` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '电话',
+  `eMail` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
+  `address` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地址',
+  `picPath` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '头像',
+  `roleId` int(11) NULL DEFAULT NULL COMMENT '角色ID',
+  `status` int(2) NULL DEFAULT NULL COMMENT '状态',
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`userId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户信息表' ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for sys_user_org
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_user_org`;
+CREATE TABLE `sys_user_org`  (
+  `userOrgId` int(11) NOT NULL AUTO_INCREMENT,
+  `userId` int(11) NULL DEFAULT NULL,
+  `orgId` int(11) NULL DEFAULT NULL,
+  `status` int(2) NULL DEFAULT NULL,
+  `crtOptr` int(11) NULL DEFAULT NULL COMMENT '新增用户',
+  `crtTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '新增日期',
+  `modOptr` int(11) NULL DEFAULT NULL COMMENT '修改用户',
+  `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`userOrgId`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户机构表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for tradelist
@@ -196,30 +274,6 @@ CREATE TABLE `tradelist`  (
   `modTime` varchar(60) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`tradeId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '行业分类列表' ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of tradelist
--- ----------------------------
-INSERT INTO `tradelist` VALUES (1, 'A', '农、林、牧、渔业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (2, 'B', '采矿业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (3, 'C', '制造业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (4, 'D', '电力、热力、燃气及水生产和供应业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (5, 'E', '建筑业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (6, 'F', '批发和零售业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (7, 'G', '交通运输、仓储和邮政业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (8, 'H', '住宿和餐饮业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (9, 'I', '信息传输、软件和信息技术服务业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (10, 'J', '金融业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (11, 'K', '房地产业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (12, 'L', '租赁和商务服务业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (13, 'M', '科学研究和技术服务业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (14, 'N', '水利、环境和公共设施管理业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (15, 'O', '居民服务、修理和其他服务业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (16, 'P', '教育', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (17, 'Q', '卫生和社会工作', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (18, 'R', '文化、体育和娱乐业', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (19, 'S', '公共管理、社会保障和社会组织', NULL, NULL, NULL, NULL);
-INSERT INTO `tradelist` VALUES (20, 'T', '国际组织', NULL, NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;
 
