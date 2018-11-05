@@ -18,15 +18,15 @@ public class CooperationlistServiceImpl implements CooperationlistService {
 	@Autowired
 	private CooperationlistDao<Cooperationlist> cooperationlistDao;
 
-
+	@Override
 	public Serializable insertCooperationlist(Cooperationlist data){
 		return cooperationlistDao.save(data);
 	}
-	
+	@Override
 	public boolean updateCooperationlist(Cooperationlist data){
 		return cooperationlistDao.saveOrUpdate(data);
 	}
-	
+	@Override
 	public Cooperationlist getCooperationlist(Integer Id){
 		Cooperationlist data = cooperationlistDao.get(Cooperationlist.class, Id);
 		return data;

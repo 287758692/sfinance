@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.sfinance.annotation.PrivilegeInfo;
+import cn.sfinance.service.SysMenuService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,20 +29,39 @@ import cn.sfinance.model.Cooperationlist;
 import cn.sfinance.service.CooperationlistService;
 
 @Controller
-@RequestMapping("/Cooperation")
+@RequestMapping("/CooperationlistController")
 public class CooperationlistController {
 	private final static Logger log = Logger.getLogger(CooperationlistController.class);
 	private ObjectMapper objectMapper = new ObjectMapper();
 	
 	@Autowired
 	private CooperationlistService cooperationlistService;
-	
+
+	@Autowired
+	private SysMenuService sysMenuService;
+
+	/**
+	 * 异业合作主界面
+	 *
+	 */
+	@RequestMapping(value = "/cooperationIndex")
+	@PrivilegeInfo(value = "20")
+	public @ResponseBody ModelAndView cooperationIndex(HttpServletRequest request){
+
+		ModelAndView mav = new ModelAndView();
+		for(Map<String, Object> map : sysMenuService.getLowMenu(20)){
+			mav.addObject(map.get("menuIcon").toString(),map.get("menuAction").toString());
+		}
+		mav.setViewName("cooperationList");
+		return mav;
+	}
 
 	/**
 	 * 合作商户列表
 	 * 
 	 */
 	@RequestMapping(value = "/list" ,produces="application/json;charset=UTF-8")
+	@PrivilegeInfo(value = "20")
 	public @ResponseBody Object list(HttpServletRequest request) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -61,8 +82,9 @@ public class CooperationlistController {
 	 * 商户新增界面
 	 * 
 	 */
-	@RequestMapping(value = "/addView")
-	public @ResponseBody Object cooperationAdd(HttpServletRequest request) throws IOException {
+	@RequestMapping(value = "/cooperationAdd")
+	@PrivilegeInfo(value = "21")
+	public @ResponseBody ModelAndView cooperationAdd(HttpServletRequest request) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("cooperationAdd");
@@ -73,6 +95,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/addConfirm", method = RequestMethod.POST)
+	@PrivilegeInfo(value = "21")
 	public @ResponseBody Object cooperationAddConfirm(HttpServletRequest request,HttpSession session) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -137,8 +160,9 @@ public class CooperationlistController {
 	 * 商户修改界面
 	 * 
 	 */
-	@RequestMapping(value = "/amdView")
-	public @ResponseBody Object cooperationAmd(HttpServletRequest request) throws IOException {
+	@RequestMapping(value = "/cooperationAmd")
+	@PrivilegeInfo(value = "22")
+	public @ResponseBody ModelAndView cooperationAmd(HttpServletRequest request) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
 		
@@ -194,6 +218,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/amdConfirm", method = RequestMethod.POST)
+	@PrivilegeInfo(value = "22")
 	public @ResponseBody Object cooperationAmdConfirm(HttpServletRequest request,HttpSession session) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();
@@ -259,6 +284,7 @@ public class CooperationlistController {
 	 * 
 	 */
 	@RequestMapping(value = "/cooperationDel", method = RequestMethod.POST)
+	@PrivilegeInfo(value = "23")
 	public @ResponseBody Object cooperationDel(HttpServletRequest request,HttpSession session) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();

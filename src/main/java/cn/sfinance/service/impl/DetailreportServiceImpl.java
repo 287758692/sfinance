@@ -19,15 +19,15 @@ public class DetailreportServiceImpl implements DetailreportService {
 	@Autowired
 	private DetailreportDao<Detailreport> detailreportDao;
 
-
+	@Override
 	public Serializable insertDetailreport(Detailreport data){
 		return detailreportDao.save(data);
 	}
-	
+	@Override
 	public boolean updateDetailreport(Detailreport data){
 		return detailreportDao.saveOrUpdate(data);
 	}
-	
+	@Override
 	public Detailreport getDetailreport(Integer Id){
 		Detailreport data = detailreportDao.get(Detailreport.class, Id);
 		return data;

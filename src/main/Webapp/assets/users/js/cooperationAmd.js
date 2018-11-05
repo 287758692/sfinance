@@ -55,7 +55,7 @@ function confirmForm() {
           //当前的form通过ajax方式提交（用到jQuery.Form文件）
       	var param = $("#cooperationAmdForm").serialize();
           $.ajax({
-              url : ctx+"/Cooperation/amdConfirm",
+              url : ctx+"/CooperationlistController/amdConfirm",
               type : "post",
               dataType : "json",
               data: param,

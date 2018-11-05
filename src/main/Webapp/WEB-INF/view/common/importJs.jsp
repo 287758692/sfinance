@@ -21,13 +21,16 @@
 <script src="${ctx}/assets/datatables/datatables.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
 
-<script src="${ctx}/assets/bootstrap3-editable/js/bootstrap-editable.js" type="text/javascript" /></script>
+<script src="${ctx}/assets/bootstrap3-editable/js/bootstrap-editable.js" type="text/javascript"></script>
 
 <script src="${ctx}/assets/bootstrap-table/bootstrap-table.min.js" type="text/javascript"></script>
 <script src="${ctx}/assets/bootstrap-table/locale/bootstrap-table-zh-CN.min.js" type="text/javascript"></script>
-<script src="${ctx}/assets/bootstrap3-editable/js/bootstrap-table-editable.js" type="text/javascript" /></script>
+<script src="${ctx}/assets/bootstrap3-editable/js/bootstrap-table-editable.js" type="text/javascript" ></script>
+<script src="${ctx}/assets/bootstrap-table-treeview/bootstraptable-treeview.js" type="text/javascript" ></script>
 
 <script src="${ctx}/assets/sweet-alert/js/sweet-alert.min.js" type="text/javascript"></script>
 
+<script src="${ctx}/assets/users/js/md5.js" type="text/javascript"></script>
 <script src="${ctx}/assets/users/js/ajaxfileupload.js" type="text/javascript"></script>
 <script src="${ctx}/assets/users/js/common.js" type="text/javascript"></script>
+<script src="${ctx}/assets/users/js/pageHeader.js" type="text/javascript"></script>

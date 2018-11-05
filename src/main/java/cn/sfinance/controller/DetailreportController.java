@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import cn.sfinance.annotation.PrivilegeInfo;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,7 @@ public class DetailreportController {
 	 * 
 	 */
 	@RequestMapping(value = "/dataView")
+	@PrivilegeInfo(value = "24")
 	public @ResponseBody Object dataView(HttpServletRequest request) throws IOException {
 		
 		ModelAndView mav = new ModelAndView();
@@ -62,6 +64,7 @@ public class DetailreportController {
 	 * 
 	 */
 	@RequestMapping(value = "/list",produces="application/json;charset=UTF-8")
+	@PrivilegeInfo(value = "24")
 	public @ResponseBody Object list(HttpServletRequest request) throws IOException {
 		
 		Map<String, Object> resultMap = new HashMap<String, Object>();

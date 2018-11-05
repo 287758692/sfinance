@@ -18,7 +18,7 @@ function initTable(){
 	    pageNumber:1,            //初始化加载第一页，默认第一页
 	    pageSize: 10,            //每页的记录行数（*）
 	    pageList: [10, 20],      //可供选择的每页的行数（*）
-	    url: ctx+"/Cooperation/list",//这个接口需要处理bootstrap table传递的固定参数
+	    url: ctx+"/CooperationlistController/list",//这个接口需要处理bootstrap table传递的固定参数
 	    //设置为undefined可以获取pageNumber，pageSize，searchText，sortName，sortOrder  
 	    //设置为limit可以获取limit, offset, search, sort, order  
 	    queryParamsType : "undefined",  
@@ -44,7 +44,7 @@ function initTable(){
 	        align: 'center',
 	        formatter:function(value,row,index){  
         		var e = '<a class="btn btn-xs btn-success" onclick="updateBtn(\''+ row.cooperationId +'\')">修改</a>'; 
-        		var r = '<a class="btn btn-xs btn-success" onclick="reportBtn(\''+ row.cooperationId +'\')">报表</a>'; 
+        		var r = '<a class="btn btn-xs btn-success" onclick="reportBtn(\''+ row.cooperationId +'\')">统计</a>';
                 var d = '<a class="btn btn-xs btn-danger"  onclick="deleteBtn(\''+ row.cooperationId +'\',\''+ row.cooperationName +'\')">删除</a>';
                 return e+r+d;
              }
@@ -73,7 +73,7 @@ function initTable(){
 }
 
 function updateBtn(cooperationId){
-	window.location.href = ctx+"/Cooperation/amdView"+"?cooperationId="+cooperationId;
+	window.location.href = ctx+"/CooperationlistController/cooperationAmd"+"?cooperationId="+cooperationId;
 }
 
 function reportBtn(cooperationId){
@@ -91,7 +91,7 @@ function deleteBtn(cooperationId,cooperationName){
 		  confirmButtonColor:"#ec6c62"
 		  },function (){
 				$.ajax({
-			        url : ctx+"/Cooperation/cooperationDel"+"?cooperationId="+cooperationId,
+			        url : ctx+"/CooperationlistController/cooperationDel"+"?cooperationId="+cooperationId,
 			        type : "post",
 			        dataType : "json"
 					}).done(function (data){

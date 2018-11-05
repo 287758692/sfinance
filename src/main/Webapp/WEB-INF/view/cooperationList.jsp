@@ -14,10 +14,14 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
-    
-	<script type="text/javascript">
-		var ctx = "${ctx}";
-	</script>
+
+    <script type="text/javascript">
+        var ctx = "${ctx}";
+        var insertBtn = "${insertBtn}";
+        var updateBtn = "${updateBtn}";
+        var deleteBtn = "${deleteBtn}";
+        var countBtn = "${countBtn}";
+    </script>
 	
 	<%@ include file="common/importCss.jsp"%>
     <%@ include file="common/importJs.jsp"%>
@@ -27,38 +31,53 @@
 
 <!-- BEGIN BODY -->
 <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
-
+<%@ include file="common/pageHeader.jsp" %>
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
 <div class="clearfix"> </div>
 <!-- END HEADER & CONTENT DIVIDER -->
-
 <!-- BEGIN CONTAINER -->
-<div class="page-content">
-<div class="portlet box green">
-    <div class="portlet-title">
-        <div class="caption">合作商户列表</div>
-    </div>
-    <div class="portlet-body">
-        <div id="sample_2_wrapper" class="dataTables_wrapper no-footer">
-        	<div id="userTb">
-             <div class="row">
-                 <div class="col-md-3">
-                     <label class="control-label">商户名称</label>
-                     <input type="text" class="form-control" id="cooperationName">
-                 </div>
-             </div>
-             <div class="row margin-bottom-10">
-                 <div class="col-md-12 text-right">
-                     <button class="btn default" onclick="initTable()"><i class=" fa fa-search"></i> 查询 </button>
-                     <a href="${ctx}/Cooperation/addView" data-toggle="modal" class="btn green"><i class="fa fa-plus"></i> 新增 </a>
+<div class="page-container">
+    <%@ include file="common/pageMenu.jsp" %>
+    <!-- BEGIN CONTENT -->
+    <div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <div class="portlet box green">
+                <div class="portlet-title">
+                    <div class="caption">合作商户列表</div>
+                </div>
+                <div class="portlet-body">
+                    <div id="sample_2_wrapper" class="dataTables_wrapper no-footer">
+                        <div id="userTb">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label class="control-label">商户名称</label>
+                                    <input type="text" class="form-control" id="cooperationName">
+                                </div>
+                            </div>
+                            <div class="row margin-bottom-10">
+                                <div class="col-md-12 text-right">
+                                    <button class="btn default" onclick="initTable()"><i class=" fa fa-search"></i> 查询 </button>
+                                    <c:choose>
+                                        <c:when test="${insertBtn!='' && insertBtn!=null}">
+                                            <a href="${ctx}/CooperationlistController/cooperationAdd" data-toggle="modal" class="btn green"><i class="fa fa-plus"></i> 新增 </a>
+                                        </c:when>
+                                        <c:otherwise>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="cooperationDg" class="table table-striped table-bordered table-hover"></table>
                     </div>
-             </div>
+                </div>
             </div>
-           	<table id="cooperationDg" class="table table-striped table-bordered table-hover"></table>
         </div>
+        <!-- END CONTENT BODY -->
     </div>
-</div>
+    <!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
+<%@ include file="common/pageFooter.jsp" %>
 </body>
 </html>

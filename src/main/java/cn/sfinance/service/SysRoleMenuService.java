@@ -1,0 +1,24 @@
+package cn.sfinance.service;
+
+import cn.sfinance.model.SysRoleMenu;
+import cn.sfinance.utils.MenuVo;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.Map;
+
+public interface SysRoleMenuService {
+    
+    public Serializable insertSysRoleMenu(SysRoleMenu data);
+    
+    public boolean updateSysRoleMenu(SysRoleMenu data);
+    
+    public int deleteSysRoleMenu(Integer roleId);
+    
+    public SysRoleMenu getSysRoleMenu(Integer Id);
+    
+    public List<MenuVo> getMenus(Integer roleId, Integer pmenuId);
+    
+    public List<Map<String, Object>> rolePrivilege(Integer roleId);
+
+}

@@ -17,20 +17,20 @@ public class ProvincelistServiceImpl implements ProvincelistService {
 	@Autowired
 	private ProvincelistDao<Provincelist> provincelistDao;
 
-
+	@Override
 	public Serializable insertProvincelist(Provincelist data){
 		return provincelistDao.save(data);
 	}
-	
+	@Override
 	public boolean updateProvincelist(Provincelist data){
 		return provincelistDao.saveOrUpdate(data);
 	}
-	
+	@Override
 	public Provincelist getProvincelist(Integer Id){
 		Provincelist data = provincelistDao.get(Provincelist.class, Id);
 		return data;
 	}
-	
+	@Override
 	public List<Map<String, Object>> getComboList() {
 		List<Map<String, Object>> result = provincelistDao.getComboList();
 		return result;
